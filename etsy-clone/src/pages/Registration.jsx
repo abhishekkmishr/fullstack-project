@@ -2,7 +2,7 @@
 
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { darkLogo } from "../assets/index";
 import { SERVER_URL } from "../constants";
@@ -21,6 +21,7 @@ const Registration = () => {
   const [apiErr, setApiErr] = useState("");
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
+  const navigate = useNavigate();
 
   // Event handlers for input fields
   const handleName = (e) => {
@@ -107,6 +108,7 @@ const Registration = () => {
         const data = await response.json();
         console.log('Registration successful:', data);
         setLoading(false);
+        navigate("/signin")
         setSuccessMsg("Account Created Successfully");
         // Reset form fields and error messages
         setClientName("");
