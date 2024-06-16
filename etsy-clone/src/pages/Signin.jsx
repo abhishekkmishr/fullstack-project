@@ -210,7 +210,7 @@ const Signin = () => {
       setLoading(true);
       setApiErr("");
       try {
-        const response = await fetch('http://localhost:8080/api/user/login', {
+        const response = await fetch(`${SERVER_URL}/api/user/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

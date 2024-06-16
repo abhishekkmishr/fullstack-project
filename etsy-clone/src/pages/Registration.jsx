@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { darkLogo } from "../assets/index";
+import { SERVER_URL } from "../constants";
 
 const Registration = () => {
   // State variables for user input and error handling
@@ -87,7 +88,7 @@ const Registration = () => {
       setLoading(true);
       setApiErr("");
       try {
-        const response = await fetch('http://localhost:8080/api/user/register', {
+        const response = await fetch(`${SERVER_URL}/api/user/register`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
