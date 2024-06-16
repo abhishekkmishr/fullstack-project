@@ -20,8 +20,7 @@ const Header = () => {
   const userInfo = useSelector((state) => state.amazonReducer.userInfo);
 
   // Data loaded with useLoaderData
-  const data = useLoaderData();
-  const products = data.data;
+  const products = useLoaderData();
 
   // Ref for handling click outside functionality
   const ref = useRef();
@@ -49,7 +48,7 @@ const Header = () => {
 
     if (query) {
       const filtered = products.filter(product =>
-        product.title.toLowerCase().includes(query)
+        product.name.toLowerCase().includes(query)
       );
       setFilteredProducts(filtered);
     } else {
@@ -89,7 +88,7 @@ const Header = () => {
                   className="text-sm font-medium py-1 px-2 hover:bg-gray-200 cursor-pointer"
                   key={item._id}
                 >
-                  {item.title}
+                  {item.name}
                 </li>
               ))}
             </ul>
@@ -113,7 +112,7 @@ const Header = () => {
                 {filteredProducts.map((product) => (
                   <li key={product.id} className="p-2 hover:bg-gray-200">
                     <Link to={`/product/${product.id}`}>
-                      {product.title}
+                      {product.name}
                     </Link>
                   </li>
                 ))}

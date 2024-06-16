@@ -104,13 +104,13 @@ import './Banner.css';
 
 const Banner = () => {
   return (
-    <div className="bg-yellow-100 py-8 border-4 border-black rounded-lg my-8 mx-4 shadow-xl">
+    <div className="bg-gray-900 text-white py-8 border-4 border-black rounded-lg my-8 mx-4 shadow-xl">
       <div className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0 lg:space-x-6">
         <div className="space-y-6 text-center lg:text-left">
           <div className="flex justify-center lg:justify-start items-center space-x-2">
             <span className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm animate-bounce">Introducing Gift Mode</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 animate-fade-in">Extra-special gifting made extra-easy</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold animate-fade-in">Extra-special gifting made extra-easy</h1>
           <button className="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 focus:outline-none animate-pulse">
             Shop now
           </button>

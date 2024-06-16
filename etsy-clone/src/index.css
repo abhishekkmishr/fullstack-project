@@ -30,6 +30,7 @@
   }
 }
 
+
 .animate-move-up {
   animation: move-up 10s linear infinite;
 }

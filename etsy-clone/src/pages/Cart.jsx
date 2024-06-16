@@ -28,22 +28,22 @@ const Cart = () => {
   }, [products]);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-900 text-white p-6">
       {products.length > 0 ? (
         // Render cart items if there are products in the cart
         <div className="container mx-auto grid grid-cols-1 xl:grid-cols-5 gap-8">
           {/* Cart items */}
-          <div className="col-span-4 bg-white p-6 shadow-lg rounded-lg">
-            <div className="flex justify-between items-center border-b pb-4">
-              <h1 className="text-2xl font-bold text-gray-800">Shopping Cart</h1>
-              <h3 className="text-xl font-semibold text-gray-800">Subtotal</h3>
+          <div className="col-span-4 bg-gray-800 p-6 shadow-lg rounded-lg">
+            <div className="flex justify-between items-center border-b border-gray-700 pb-4">
+              <h1 className="text-2xl font-bold text-gray-100">Shopping Cart</h1>
+              <h3 className="text-xl font-semibold text-gray-100">Subtotal</h3>
             </div>
             <div>
               {/* Display each product in the cart */}
               {products.map((item) => (
                 <div
                   key={item.id}
-                  className="flex flex-col md:flex-row items-center justify-between border-b py-4"
+                  className="flex flex-col md:flex-row items-center justify-between border-b border-gray-700 py-4"
                 >
                   {/* Product details */}
                   <div className="md:flex items-center gap-4">
@@ -53,24 +53,24 @@ const Cart = () => {
                       alt="productImg"
                     />
                     <div className="flex flex-col gap-2 mt-4 md:mt-0">
-                      <h2 className="text-lg font-semibold text-gray-800">{item.title}</h2>
-                      <p className="text-gray-600">{item.description}</p>
-                      <p className="text-base text-gray-800">
+                      <h2 className="text-lg font-semibold text-gray-100">{item.title}</h2>
+                      <p className="text-gray-400">{item.description}</p>
+                      <p className="text-base text-gray-100">
                         Unit Price: <span className="font-semibold">${item.price}</span>
                       </p>
                       {/* Quantity control */}
-                      <div className="flex items-center gap-2 bg-gray-100 p-2 rounded-md">
-                        <p className="text-base">Qty:</p>
+                      <div className="flex items-center gap-2 bg-gray-700 p-2 rounded-md">
+                        <p className="text-base text-gray-100">Qty:</p>
                         <button
                           onClick={() => dispatch(decreaseQuantity(item.id))}
-                          className="px-2 py-1 bg-gray-200 rounded-md hover:bg-gray-300"
+                          className="px-2 py-1 bg-gray-600 text-gray-100 rounded-md hover:bg-gray-500"
                         >
                           -
                         </button>
-                        <span className="text-amazon_blue font-semibold">{item.quantity}</span>
+                        <span className="text-gray-100 font-semibold">{item.quantity}</span>
                         <button
                           onClick={() => dispatch(increaseQuantity(item.id))}
-                          className="px-2 py-1 bg-gray-200 rounded-md hover:bg-gray-300"
+                          className="px-2 py-1 bg-gray-600 text-gray-100 rounded-md hover:bg-gray-500"
                         >
                           +
                         </button>
@@ -78,14 +78,14 @@ const Cart = () => {
                       {/* Delete item button */}
                       <button
                         onClick={() => dispatch(deleteItem(item.id))}
-                        className="mt-2 py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600"
+                        className="mt-2 py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-700"
                       >
                         Delete Item
                       </button>
                     </div>
                   </div>
                   {/* Total price for each product */}
-                  <div className="mt-4 md:mt-0 text-lg font-semibold text-gray-800">
+                  <div className="mt-4 md:mt-0 text-lg font-semibold text-gray-100">
                     ${item.price * item.quantity}
                   </div>
                 </div>
@@ -95,25 +95,25 @@ const Cart = () => {
             <div className="mt-4 flex justify-end">
               <button
                 onClick={() => dispatch(resetCart())}
-                className="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
               >
                 Clear Cart
               </button>
             </div>
           </div>
           {/* Summary section */}
-          <div className="col-span-1 bg-white p-6 shadow-lg rounded-lg">
-            <p className="flex items-start text-sm text-gray-600 mb-4">
+          <div className="col-span-1 bg-gray-800 p-6 shadow-lg rounded-lg">
+            <p className="flex items-start text-sm text-gray-400 mb-4">
               <CheckCircleIcon className="text-green-500 mr-2" />
               Your order qualifies for FREE Shipping. Choose this option at checkout.
               See details....
             </p>
             <div className="flex justify-between items-center mb-4">
-              <p className="text-gray-800 font-semibold">Total:</p>
-              <p className="text-lg font-bold text-gray-800">${totalAmt}</p>
+              <p className="text-gray-100 font-semibold">Total:</p>
+              <p className="text-lg font-bold text-gray-100">${totalAmt}</p>
             </div>
             {/* Proceed to buy button */}
-            <button className="w-full py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">
+            <button className="w-full py-2 bg-yellow-500 text-gray-900 rounded-md hover:bg-yellow-600">
               Proceed to Buy
             </button>
           </div>
@@ -131,15 +131,15 @@ const Cart = () => {
             src={emptyCart}
             alt="emptyCart"
           />
-          <div className="bg-white p-6 rounded-md shadow-lg text-center">
-            <h1 className="text-xl font-bold mb-2">Your Cart feels lonely.</h1>
-            <p className="text-sm text-gray-600 mb-6">
+          <div className="bg-gray-800 p-6 rounded-md shadow-lg text-center">
+            <h1 className="text-xl font-bold mb-2 text-gray-100">Your Cart feels lonely.</h1>
+            <p className="text-sm text-gray-400 mb-6">
               Your Shopping cart lives to serve. Give it purpose - fill it with
               books, electronics, videos, etc. and make it happy.
             </p>
             {/* Continue shopping button */}
             <Link to="/">
-              <button className="px-6 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">
+              <button className="px-6 py-2 bg-yellow-500 text-gray-900 rounded-md hover:bg-yellow-600">
                 Continue Shopping
               </button>
             </Link>
