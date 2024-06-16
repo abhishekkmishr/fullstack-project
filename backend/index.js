@@ -4,7 +4,7 @@ import connectDB from "./src/config/db.js";
 import cors from "cors";
 import userRouter from "./src/routes/user.routes.js";
 import cartRouter from "./src/routes/cart.routes.js";
-import productRouter from "./src/routes/product.routes.js"; 
+import productRouter from "./src/routes/product.routes.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
@@ -16,7 +16,9 @@ connectDB();
 
 // Middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "*"
+}));
 app.use(cookieParser());
 
 // Routes
