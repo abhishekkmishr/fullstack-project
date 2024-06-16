@@ -1,32 +1,54 @@
-import mongoose from "mongoose"
-import bcrypt from "bcryptjs"
+// Import mongoose library to interact with MongoDB
+import mongoose from "mongoose";
+// Import bcrypt library for hashing passwords
+import bcrypt from "bcryptjs";
 
-const userSchema =new mongoose.Schema({
-    username:{type : String, required: true},
-    email:{type : String, required: true, unique: true},
-    password:{type :String, required:true}
+// Define the schema for the User model
+const userSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true // username is required
+    },
+    email: {
+        type: String,
+        required: true, // email is required
+        unique: true // email must be unique
+    },
+    password: {
+        type: String,
+        required: true // password is required
+    }
 },
 {
-timestamps: true,
-versionKey: false
-})
+    timestamps: true, // Add createdAt and updatedAt timestamps
+    versionKey: false // Disable the __v version key
+});
 
-userSchema.pre("save",async function(next){
+// Pre-save middleware to hash the password before saving the user document
+userSchema.pre("save", async function(next) {
+    // Check if the password field is modified
     if (!this.isModified("password")) {
-        next()
+        next(); // If not modified, proceed to the next middleware or save function
     }
     try {
-        const salt = await bcrypt.genSaltSync(10)
-        this.password = await bcrypt.hash(this.password, salt)
+        // Generate a salt for hashing the password
+        const salt = await bcrypt.genSaltSync(10);
+        // Hash the password using the generated salt
+        this.password = await bcrypt.hash(this.password, salt);
     } catch (error) {
-        next(error)
+        // Pass any error to the next middleware or save function
+        next(error);
     }
-})
+});
 
+// Method to compare the entered password with the hashed password stored in the database
 userSchema.methods.matchPassword = async function(enteredPassword) {
-    return await bcrypt.compareSync(enteredPassword,this.password)
+    // Compare the entered password with the hashed password
+    return await bcrypt.compareSync(enteredPassword, this.password);
 }
 
-const User = mongoose.model("User",userSchema)
+// Create the User model from the user schema
+const User = mongoose.model("User", userSchema);
 
-export default User
+// Export the User model for use in other parts of the application
+export default User;
