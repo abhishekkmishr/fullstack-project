@@ -1,0 +1,52 @@
+/* Banner.css */
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 5s linear infinite;
+}
+
+.animate-slide-down {
+  animation: slide-down 5s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1.5s ease-in;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
